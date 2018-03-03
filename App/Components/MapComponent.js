@@ -4,7 +4,7 @@ import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 import StoreLocatorCallout from './MapComponentCallout'
 import MapCustomStyle from './Styles/MapCustomStyle'
 import Styles from './Styles/StoreLocatorStyles'
-
+import DeviceInfo from '../Utils/DeviceInfo'
 
 // Generate this MapHelpers file with `ignite generate map-utilities`
 // You must have Ramda as a dev dependency to use this.
@@ -33,8 +33,8 @@ class MapComponent extends React.Component {
     * a latitude and longitude as well as any additional information you wish to display.
     *************************************************************/
     const locations = [
-      { title: 'Location A', latitude: 37.78825, longitude: -122.4324 },
-      { title: 'Location B', latitude: 37.75825, longitude: -122.4624 }
+      {title: 'Location A', latitude: 37.78825, longitude: -122.4324},
+      {title: 'Location B', latitude: 37.75825, longitude: -122.4624}
     ]
     /* ***********************************************************
     * STEP 2
@@ -44,7 +44,7 @@ class MapComponent extends React.Component {
     * `ignite generate map-utilities`
     *************************************************************/
     // const region = calculateRegion(locations, { latPadding: 0.05, longPadding: 0.05 })
-    const region = { latitude: 32.064675, longitude: 34.776427, latitudeDelta: 0.01, longitudeDelta: 0.01}
+    const region = {latitude: 32.064675, longitude: 34.776427, latitudeDelta: 0.01, longitudeDelta: 0.01}
     this.state = {
       region,
       locations,
@@ -99,15 +99,16 @@ class MapComponent extends React.Component {
 
     return (
       <MapView.Marker key={location.title} coordinate={{latitude: location.latitude, longitude: location.longitude}}>
-        <StoreLocatorCallout location={location} onPress={this.calloutPress} />
+        <StoreLocatorCallout location={location} onPress={this.calloutPress}/>
       </MapView.Marker>
     )
   }
 
   render () {
-    let setProviderAsGoogleMaps
+    let setProviderAsGoogleMaps = DeviceInfo.isiOS() ? {provider: PROVIDER_GOOGLE} : {}
     return (
       <MapView
+        {...setProviderAsGoogleMaps}
         style={Styles.map}
         customMapStyle={MapCustomStyle}
         initialRegion={this.state.region}

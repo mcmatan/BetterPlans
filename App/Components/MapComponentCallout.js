@@ -3,7 +3,7 @@ import { Text, TouchableOpacity } from 'react-native'
 import { Callout } from 'react-native-maps'
 import Styles from './Styles/StoreLocatorCalloutStyles'
 
-export default class StoreLocatorCallout extends React.Component {
+export default class MapComponentCallout extends React.Component {
   constructor (props) {
     super(props)
     this.onPress = this.props.onPress.bind(this, this.props.location)

@@ -1,19 +1,19 @@
 import React, {Component} from 'react'
 import {Text, View, StyleSheet} from 'react-native'
 import {connect} from 'react-redux'
-import StoreLocator from "../Components/StoreLocator";
+import StoreLocator from '../Components/MapComponent'
 
 class MapScreen extends Component {
-  render() {
+  render () {
     return (
       <View style={styles.container}>
-        <StoreLocator/>
+        <StoreLocator />
       </View>
     )
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {}
 }
 
@@ -23,4 +23,4 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   }
-});
+})

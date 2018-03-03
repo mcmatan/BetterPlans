@@ -1,0 +1,5 @@
+class DeviceInfo {
+  static isiOS () {
+
+  }
+}

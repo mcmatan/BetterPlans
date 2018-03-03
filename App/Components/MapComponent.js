@@ -1,9 +1,10 @@
 import React from 'react'
 import { View } from 'react-native'
-import MapView from 'react-native-maps'
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 import StoreLocatorCallout from './MapComponentCallout'
 import MapCustomStyle from './Styles/MapCustomStyle'
 import Styles from './Styles/StoreLocatorStyles'
+
 
 // Generate this MapHelpers file with `ignite generate map-utilities`
 // You must have Ramda as a dev dependency to use this.
@@ -104,6 +105,7 @@ class MapComponent extends React.Component {
   }
 
   render () {
+    let setProviderAsGoogleMaps
     return (
       <MapView
         style={Styles.map}
